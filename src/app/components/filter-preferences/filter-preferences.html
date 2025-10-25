@@ -1,0 +1,94 @@
+<div class="filter-preferences">
+  <h2>Movie Preferences</h2>
+  
+  <div class="filter-section">
+    <h3>Genres</h3>
+    <div class="genres-grid">
+      <label *ngFor="let genre of genres" class="genre-checkbox">
+        <input 
+          type="checkbox" 
+          [value]="genre.id" 
+          (change)="onGenreChange(genre.id, $event)"
+        >
+        <span class="checkmark"></span>
+        {{ genre.name }}
+      </label>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <h3>Release Year</h3>
+    <select 
+      [(ngModel)]="filters.year" 
+      (ngModelChange)="onFilterChange()"
+      class="filter-select"
+    >
+      <option [ngValue]="undefined">Any Year</option>
+      <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+    </select>
+  </div>
+
+  <div class="filter-section">
+    <h3>Rating Range</h3>
+    <div class="rating-range">
+      <label>
+        Min Rating:
+        <input 
+          type="range" 
+          min="0" 
+          max="10" 
+          step="0.5"
+          [(ngModel)]="filters.minRating" 
+          (ngModelChange)="onFilterChange()"
+          class="slider"
+        >
+        <span class="rating-value">{{ filters.minRating }}+</span>
+      </label>
+      
+      <label>
+        Max Rating:
+        <input 
+          type="range" 
+          min="0" 
+          max="10" 
+          step="0.5"
+          [(ngModel)]="filters.maxRating" 
+          (ngModelChange)="onFilterChange()"
+          class="slider"
+        >
+        <span class="rating-value">{{ filters.maxRating }}+</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <h3>Language</h3>
+    <select 
+      [(ngModel)]="filters.language" 
+      (ngModelChange)="onFilterChange()"
+      class="filter-select"
+    >
+      <option value="">Any Language</option>
+      <option *ngFor="let lang of languages" [value]="lang.code">
+        {{ lang.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="filter-section">
+    <h3>Duration</h3>
+    <select 
+      [(ngModel)]="filters.duration" 
+      (ngModelChange)="onFilterChange()"
+      class="filter-select"
+    >
+      <option *ngFor="let option of durationOptions" [value]="option.value">
+        {{ option.label }}
+      </option>
+    </select>
+  </div>
+
+  <button class="clear-filters-btn" (click)="clearFilters()">
+    Clear All Filters
+  </button>
+</div>

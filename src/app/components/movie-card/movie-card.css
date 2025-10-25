@@ -1,0 +1,260 @@
+.movie-card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.movie-card.expanded {
+  margin-bottom: 20px;
+}
+
+.movie-poster {
+  position: relative;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover .movie-poster img {
+  transform: scale(1.05);
+}
+
+.movie-rating {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #21d07a;
+  color: white;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.9em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.movie-info {
+  padding: 20px;
+}
+
+.movie-title {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: white;
+  line-height: 1.3;
+}
+
+.movie-year {
+  color: #888;
+  margin: 0 0 12px 0;
+  font-size: 0.9em;
+}
+
+.movie-overview {
+  color: #ccc;
+  font-size: 0.95em;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.details-btn {
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.details-btn:hover:not(:disabled) {
+  background: #f40612;
+}
+
+.details-btn:disabled {
+  background: #666;
+  cursor: not-allowed;
+}
+
+.movie-details {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+}
+
+.movie-details h4 {
+  color: white;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+/* Trailers Section */
+.trailers-section {
+  margin-bottom: 20px;
+}
+
+.trailers-section h4 {
+  color: white;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+.loading-trailers,
+.no-trailers {
+  text-align: center;
+  padding: 20px;
+  color: #888;
+  background: #2a2a2a;
+  border-radius: 8px;
+}
+
+.trailer-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.trailer-btn {
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.trailer-btn:hover {
+  background: #f40612;
+  transform: translateY(-2px);
+}
+
+.trailer-player {
+  position: relative;
+  margin: 15px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+
+.trailer-player iframe {
+  display: block;
+  border: none;
+}
+
+.close-trailer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.close-trailer:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* Cast Section */
+.cast-list {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.cast-member {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 200px;
+  background: #2a2a2a;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.cast-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cast-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cast-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cast-info strong {
+  color: white;
+  font-size: 0.9em;
+}
+
+.cast-info span {
+  color: #888;
+  font-size: 0.8em;
+}
+
+/* Additional Info */
+.additional-info {
+  margin-top: 15px;
+}
+
+.additional-info p {
+  margin: 5px 0;
+  color: #ccc;
+  font-size: 0.9em;
+}
+
+/* Scrollbar styling */
+.cast-list::-webkit-scrollbar {
+  height: 6px;
+}
+
+.cast-list::-webkit-scrollbar-track {
+  background: #2a2a2a;
+  border-radius: 3px;
+}
+
+.cast-list::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 3px;
+}
+
+.cast-list::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}

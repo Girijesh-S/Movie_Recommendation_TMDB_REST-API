@@ -1,0 +1,93 @@
+<div class="movie-card" [class.expanded]="showDetails">
+  <div class="movie-poster">
+    <img 
+      [src]="getPosterUrl(movie.poster_path)" 
+      [alt]="movie.title"
+      (error)="onPosterError($event)"
+    >
+    <div class="movie-rating" [style.background]="getRatingColor(movie.vote_average)">
+      {{ movie.vote_average.toFixed(1) }}
+    </div>
+  </div>
+
+  <div class="movie-info">
+    <h3 class="movie-title">{{ movie.title }}</h3>
+    <p class="movie-year">{{ getYearFromDate(movie.release_date) }}</p>
+    <p class="movie-overview">{{ movie.overview | slice:0:150 }}{{ movie.overview.length > 150 ? '...' : '' }}</p>
+    
+    <button 
+      class="details-btn" 
+      (click)="toggleDetails()"
+      [disabled]="isLoading"
+    >
+      {{ showDetails ? 'Hide Details' : (isLoading ? 'Loading...' : 'Show Details') }}
+    </button>
+
+    <div *ngIf="showDetails" class="movie-details">
+      <!-- Trailers Section -->
+      <div class="trailers-section">
+        <h4>Trailers</h4>
+        
+        <div *ngIf="!trailersLoaded && isLoading" class="loading-trailers">
+          <p>Loading trailers...</p>
+        </div>
+        
+        <div *ngIf="trailersLoaded && hasTrailers" class="trailers-content">
+          <div class="trailer-buttons">
+            <button 
+              *ngFor="let trailer of trailers; let i = index" 
+              class="trailer-btn"
+              (click)="playTrailer(trailer)"
+            >
+              {{ trailer.name || `Trailer ${i + 1}` }}
+            </button>
+          </div>
+          
+          <div *ngIf="activeTrailerUrl" class="trailer-player">
+            <iframe
+              [id]="'trailer-' + movie.id"
+              [src]="activeTrailerUrl"
+              width="100%"
+              height="315"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+            <button class="close-trailer" (click)="closeTrailer()">×</button>
+          </div>
+        </div>
+        
+        <div *ngIf="trailersLoaded && !hasTrailers" class="no-trailers">
+          <p>No trailers available for this movie.</p>
+        </div>
+      </div>
+
+      <!-- Cast Section -->
+      <div *ngIf="cast.length > 0" class="cast-section">
+        <h4>Top Cast</h4>
+        <div class="cast-list">
+          <div *ngFor="let person of cast" class="cast-member">
+            <div class="cast-photo">
+              <img 
+                [src]="getCastPhotoUrl(person.profile_path)" 
+                [alt]="person.name"
+                (error)="onCastPhotoError($event, person)"
+              >
+            </div>
+            <div class="cast-info">
+              <strong>{{ person.name }}</strong>
+              <span>{{ person.character }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Info -->
+      <div class="additional-info">
+        <p><strong>Votes:</strong> {{ movie.vote_count | number }}</p>
+        <p><strong>Popularity:</strong> {{ movie.popularity | number:'1.0-0' }}</p>
+        <p><strong>Original Language:</strong> {{ movie.original_language | uppercase }}</p>
+      </div>
+    </div>
+  </div>
+</div>
