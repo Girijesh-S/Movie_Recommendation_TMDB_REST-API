@@ -23,6 +23,19 @@ This project uses the TMDB (The Movie Database) REST API to build a movie recomm
 
 - TMDB API Key (You need to sign up for an account on TMDB and generate an API key)
 
+## 📸 Screenshots
+
+Screenshots are available in the `/screenshots` folder.  
+Example:
+
+![Img1](screenshots/Img1.png)
+![Img2](screenshots/Img2.png)
+![Img3](screenshots/Img3.png)
+![Img4](screenshots/Img4.png)
+![Img5](screenshots/Img5.png)
+
+---
+
 ### Setup
 
 1. Clone the repository:
