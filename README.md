@@ -1,6 +1,8 @@
-# MovieRecommendation1
+# Movie Recommendation Using TMDB REST API
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.6.
+
+This project uses the TMDB (The Movie Database) REST API to build a movie recommendation system. It allows users to get movie recommendations based on their preferences and displays details like movie title, overview, cast details, release date, watch trailer, etc.
 
 ## Development server
 
@@ -20,12 +22,6 @@ Angular CLI includes powerful code scaffolding tools. To generate a new componen
 ng generate component component-name
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
 ## Building
 
 To build the project run:
@@ -34,25 +30,34 @@ To build the project run:
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
+## Features
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- Fetch movie data from TMDB using the REST API.
+- Provide personalized movie recommendations based on genre or popularity.
+- Display movie details such as title, release date, overview, and poster.
+- Built using Python, requests, and JSON handling.
 
-```bash
-ng test
-```
+## Tech Stack
 
-## Running end-to-end tests
+- **Language**: Python
+- **Libraries**: 
+  - `requests`: To interact with the TMDB REST API
+  - `json`: For parsing the JSON responses
 
-For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
+## Installation
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Prerequisites
+
+- TMDB API Key (You need to sign up for an account on TMDB and generate an API key)
+
+### Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Girijesh-S/Movie_Recommendation_TMDB_REST-API.git
+
 
 ## Additional Resources
 
